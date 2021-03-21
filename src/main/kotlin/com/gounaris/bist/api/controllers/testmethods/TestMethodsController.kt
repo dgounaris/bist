@@ -19,10 +19,4 @@ class TestMethodsController(
             TestMethodsRetrievalByTypeService.TestMethodType.GIVEN
         )
     )
-
-    @PutMapping("/scenario/save")
-    fun saveScenario(@RequestBody scenario: TestScenarioRequestBody) {
-        //todo save scenario. then try to execute, lookup on retrieval service for the method and the details,
-        //todo proper cast for variables, keep result
-    }
 }

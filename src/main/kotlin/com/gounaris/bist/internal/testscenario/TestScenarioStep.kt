@@ -1,9 +1,9 @@
 package com.gounaris.bist.internal.testscenario
 
 data class TestScenarioStep (
-    val id: Long,
-    val scenarioId: Long,
+    val id: Long?,
     val identifier: String,
-    val parameterIds: List<Long>,
-    val resultHoldingParameterName: String
+    val parameters: List<TestScenarioStepParameter>,
+    val resultHoldingParameterName: String?,
+    val stepOrder: Int
 )
