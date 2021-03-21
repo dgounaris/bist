@@ -16,7 +16,7 @@ data class TestScenarioStepRequestBody(
 )
 
 data class TestScenarioStepParameterRequestBody(
-    val name: String,
+    val name: String, // this is the identifier for the step function actual param name, so order is not required internally
     val reference: String?, // if this is not null, the value of this parameter is taken by referencing an existing result
     val value: String? // if this is not null, the value of this parameter is taken by passed value
 )

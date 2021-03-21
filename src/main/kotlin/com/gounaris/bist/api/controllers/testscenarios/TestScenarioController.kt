@@ -1,6 +1,7 @@
 package com.gounaris.bist.api.controllers.testscenarios
 
 import com.gounaris.bist.internal.testscenario.services.TestScenarioCreator
+import com.gounaris.bist.internal.testscenario.services.TestScenarioExecutor
 import com.gounaris.bist.internal.testscenario.services.TestScenarioRetriever
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.GetMapping
@@ -15,7 +16,8 @@ import org.springframework.web.bind.annotation.RestController
 @RequestMapping("/testscenarios")
 class TestScenarioController(
     @Autowired private val testScenarioCreator: TestScenarioCreator,
-    @Autowired private val testScenarioRetriever: TestScenarioRetriever
+    @Autowired private val testScenarioRetriever: TestScenarioRetriever,
+    @Autowired private val testScenarioExecutor: TestScenarioExecutor
 ) {
     @PutMapping("/save")
     fun saveScenario(@RequestBody scenario: TestScenarioRequestBody) =
@@ -29,5 +31,10 @@ class TestScenarioController(
             TestScenarioRetriever.TestScenarioRetrieveCommand(id)
         )
 
-
+    @PostMapping("/{id}/execute")
+    fun executeScenario(@PathVariable("id") id: Long) {
+        testScenarioExecutor.execute(
+            TestScenarioExecutor.TestScenarioExecuteCommand(id)
+        )
+    }
 }

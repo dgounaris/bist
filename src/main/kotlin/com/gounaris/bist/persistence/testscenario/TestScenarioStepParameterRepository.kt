@@ -15,11 +15,11 @@ class TestScenarioStepParameterConverter(
     @Autowired private val testScenarioStepParameterRepository: TestScenarioStepParameterRepository
 ) {
     fun toEntity(dto: com.gounaris.bist.internal.testscenario.TestScenarioStepParameter, stepId: Long) =
-        com.gounaris.bist.persistence.testscenario.TestScenarioStepParameter(
+        TestScenarioStepParameter(
             dto.id, stepId, dto.name, dto.reference, dto.value
         )
 
-    fun toDto(entity: com.gounaris.bist.persistence.testscenario.TestScenarioStepParameter) =
+    fun toDto(entity: TestScenarioStepParameter) =
         com.gounaris.bist.internal.testscenario.TestScenarioStepParameter(
             entity.id,
             entity.name,

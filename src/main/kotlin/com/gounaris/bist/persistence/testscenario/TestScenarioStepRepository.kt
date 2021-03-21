@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository
 
 @Repository
 interface TestScenarioStepRepository : JpaRepository<TestScenarioStep, Long> {
-    fun findAllByScenarioId(scenarioId: Long): List<TestScenarioStep>
+    fun findAllByScenarioIdOrderByStepOrderAsc(scenarioId: Long): List<TestScenarioStep>
 }
 
 @Component
@@ -16,11 +16,11 @@ internal class TestScenarioStepConverter(
     @Autowired private val testScenarioStepParameterConverter: TestScenarioStepParameterConverter
 ) {
     fun toEntity(dto: com.gounaris.bist.internal.testscenario.TestScenarioStep, scenarioId: Long) =
-        com.gounaris.bist.persistence.testscenario.TestScenarioStep(
+        TestScenarioStep(
             dto.id, scenarioId, dto.identifier, dto.resultHoldingParameterName, dto.stepOrder
         )
 
-    fun toDto(entity: com.gounaris.bist.persistence.testscenario.TestScenarioStep) =
+    fun toDto(entity: TestScenarioStep) =
         com.gounaris.bist.internal.testscenario.TestScenarioStep(
             entity.id,
             entity.identifier,

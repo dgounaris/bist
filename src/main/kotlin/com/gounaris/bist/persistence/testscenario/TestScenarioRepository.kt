@@ -59,7 +59,7 @@ internal class TestScenarioConverter(
 
     fun toDto(entity: TestScenario) =
         com.gounaris.bist.internal.testscenario.TestScenario(
-            entity.id, entity.name, testScenarioStepRepository.findAllByScenarioId(entity.id!!).map {
+            entity.id, entity.name, testScenarioStepRepository.findAllByScenarioIdOrderByStepOrderAsc(entity.id!!).map {
                 testScenarioStepConverter.toDto(it)
             }
         )

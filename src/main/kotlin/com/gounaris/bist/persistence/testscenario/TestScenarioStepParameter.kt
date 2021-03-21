@@ -27,5 +27,4 @@ data class TestScenarioStepParameter (
 
     @Column(nullable = true)
     val paramValue: String? = null
-    // todo add step parameter order to recreate list order
 )
